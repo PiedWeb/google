@@ -185,13 +185,12 @@ class SERPExtractor
         $iOrganic = 0;
 
         foreach ($nodes as $k => $node) {
-            // skip if you are in ads
             $ads = null !== $nodes->eq($k)->closest('#tads, #bottomads');
             if ($organicOnly && $ads) {
                 continue;
             }
 
-            $result = $this->extractResultFrom($node, $ads ? 0 : $iOrganic + 1,  $i + 1, $ads);
+            $result = $this->extractResultFrom($node, $ads ? 0 : $iOrganic + 1, $i + 1, $ads);
             if (! $result instanceof SearchResult) {
                 continue;
             }
